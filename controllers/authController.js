@@ -58,8 +58,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   if (!token) {
     return next(
-      new AppError('You are not logged in! Please log in to get access.'),
-      401
+      new AppError('You are not logged in! Please log in to get access.', 401)
     );
   }
 
@@ -76,7 +75,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     );
   }
 
-  if (currentUser.changePasswordAfter(decoded.iat)) {
+  if (currentUser.changedPasswordAfter(decoded.iat)) {
     return next(
       new AppError('User recently changed password! Please log in again.', 401)
     );
