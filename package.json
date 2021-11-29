@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "start:prod": "NODE_ENV=production nodemon server.js",
-    "debug": "ndb server.js"
+    "debug": "ndb server.js",
+    "import:data": "node dev-data/data/import-dev-data.js --import",
+    "delete:data": "node dev-data/data/import-dev-data.js --delete"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +20,7 @@
     "mongoose": "^5.5.2",
     "morgan": "^1.10.0",
     "ndb": "^1.1.5",
+    "nodemailer": "^6.7.2",
     "nodemon": "^2.0.13",
     "slugify": "^1.6.1",
     "validator": "^13.6.0"
