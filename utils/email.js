@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
-  // TODO Create a transporter
+  // Create a transporter
 
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_HOST,
@@ -12,7 +12,7 @@ const sendEmail = async (options) => {
     },
   });
 
-  // TODO Define the email address
+  // Define the email address
 
   const mailOptions = {
     from: 'CallyDev <devCally@developer.io>',
@@ -22,7 +22,7 @@ const sendEmail = async (options) => {
     //   html:
   };
 
-  // TODO Actually send the email
+  // Actually send the email
 
   await transporter.sendMail(mailOptions);
 };
