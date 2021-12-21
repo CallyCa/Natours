@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const mongoSanitaze = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const hpp = require('hpp');
 
 const AppError = require('./utils/appError');
 const globalErorHandler = require('./controllers/errorController');
@@ -39,6 +40,21 @@ app.use(express.json({ limit: '10kb' }));
 app.use(mongoSanitaze());
 
 app.use(xss());
+
+// Prevent parameter pollution
+
+app.use(
+  hpp({
+    whitelist: [
+      'duration',
+      'ratingsQuantity',
+      'ratingsAverage',
+      'maxGroupSize',
+      'difficulty',
+      'price',
+    ],
+  })
+);
 
 app.use(express.static(`${__dirname}/public`));
 
